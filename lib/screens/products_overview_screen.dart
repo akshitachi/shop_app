@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../widgets/products_grid.dart';
 
 enum FilterOptions {
@@ -12,13 +13,14 @@ class ProductsOverviewScreen extends StatefulWidget {
 }
 
 class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
+  var _showOnlyFavorites = false;
+
   @override
   Widget build(BuildContext context) {
-    var _showOnlyFavorites = false;
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Shop'),
-        actions: [
+        title: Text('MyShop'),
+        actions: <Widget>[
           PopupMenuButton(
             onSelected: (FilterOptions selectedValue) {
               setState(() {
@@ -42,7 +44,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                 value: FilterOptions.All,
               ),
             ],
-          )
+          ),
         ],
       ),
       body: ProductsGrid(_showOnlyFavorites),
