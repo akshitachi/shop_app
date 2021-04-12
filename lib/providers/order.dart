@@ -50,7 +50,7 @@ class Orders with ChangeNotifier {
       );
     });
     _orders = loadedOrders.reversed.toList();
-    notifyListeners();
+    notifyListeners();                                                                             
   }
 
   Future<void> addOrder(List<CartItem> cartProducts, double total) async {
