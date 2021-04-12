@@ -50,12 +50,12 @@ class Orders with ChangeNotifier {
       );
     });
     _orders = loadedOrders.reversed.toList();
-    notifyListeners();                                                                             
+    notifyListeners();
   }
 
   Future<void> addOrder(List<CartItem> cartProducts, double total) async {
     final url = Uri.parse(
-        'https://shop-app-8224c-default-rtdb.firebaseio.com/orders .json');
+        'https://shop-app-8224c-default-rtdb.firebaseio.com/orders.json');
     final timeStamp = DateTime.now();
     final response = await http.post(
       url,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../screens/edit_product_screen.dart';
 import 'package:provider/provider.dart';
+
+import '../screens/edit_product_screen.dart';
 import '../providers/products.dart';
 
 class UserProductItem extends StatelessWidget {
@@ -8,11 +9,8 @@ class UserProductItem extends StatelessWidget {
   final String title;
   final String imageUrl;
 
-  UserProductItem(
-    this.id,
-    this.title,
-    this.imageUrl,
-  );
+  UserProductItem(this.id, this.title, this.imageUrl);
+
   @override
   Widget build(BuildContext context) {
     final scaffold = Scaffold.of(context);
@@ -24,14 +22,12 @@ class UserProductItem extends StatelessWidget {
       trailing: Container(
         width: 100,
         child: Row(
-          children: [
+          children: <Widget>[
             IconButton(
               icon: Icon(Icons.edit),
               onPressed: () {
-                Navigator.of(context).pushNamed(
-                  EditProductScreen.routeName,
-                  arguments: id,
-                );
+                Navigator.of(context)
+                    .pushNamed(EditProductScreen.routeName, arguments: id);
               },
               color: Theme.of(context).primaryColor,
             ),
@@ -44,7 +40,7 @@ class UserProductItem extends StatelessWidget {
                 } catch (error) {
                   scaffold.showSnackBar(
                     SnackBar(
-                      content: Text('Deleting failed'),
+                      content: Text('Deleting failed!', textAlign: TextAlign.center,),
                     ),
                   );
                 }
@@ -57,3 +53,4 @@ class UserProductItem extends StatelessWidget {
     );
   }
 }
+
