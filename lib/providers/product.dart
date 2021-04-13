@@ -8,6 +8,7 @@ class Product with ChangeNotifier {
   final String description;
   final double price;
   final String imageUrl;
+  
   bool isFavorite;
 
   Product({
@@ -16,7 +17,9 @@ class Product with ChangeNotifier {
     @required this.description,
     @required this.price,
     @required this.imageUrl,
+    
     this.isFavorite = false,
+
   });
   Future<void> toggleisFavoriteStatus(String token, String userId) async {
     final oldStatus = isFavorite;
@@ -25,7 +28,7 @@ class Product with ChangeNotifier {
     final url = Uri.parse(
         'https://shop-app-8224c-default-rtdb.firebaseio.com/userFavorites/$userId/$id.json?auth=$token');
     try {
-    final response=  await http.put(
+      final response = await http.put(
         url,
         body: json.encode(
           isFavorite,
